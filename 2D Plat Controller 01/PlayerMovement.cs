@@ -72,7 +72,8 @@ public class PlayerMovement : MonoBehaviour
         // Jump only if grounded
         if (context.performed && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            JumpVelocity();
             canDoubleJump = true;
         }
 
@@ -85,7 +86,8 @@ public class PlayerMovement : MonoBehaviour
         // Double jump
         if (!IsGrounded() && context.performed && canDoubleJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            JumpVelocity();
             canDoubleJump = false;
         }
     }
@@ -95,4 +97,11 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = context.ReadValue<Vector2>().x;
     }
+
+    void JumpVelocity()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+    }
+    
+
 }
