@@ -95,14 +95,4 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = context.ReadValue<Vector2>().x;
     }
-
-    // IsJumping check
-    public bool IsJumping()
-    {
-        if (playerInputs.Player.Jump.IsPressed())
-        {
-            return true;
-        }
-        return false;
-    }
 }
