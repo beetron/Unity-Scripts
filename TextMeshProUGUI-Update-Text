@@ -1,0 +1,28 @@
+///////////////////////////////////////////
+// Updating canvas text based on variable (health text)
+///////////////////////////////////////////
+
+public class HealthText : MonoBehaviour
+{
+    TextMeshProUGUI textMeshPro;
+    PlayerHealth playerHealth;
+
+    void Start()
+    {
+        textMeshPro = GetComponent<TextMeshProUGUI>();
+        playerHealth = PlayerHealth.instance;
+
+        if (playerHealth != null)
+        {
+            textMeshPro.text = $"Health: {playerHealth.health} / {playerHealth.maxHealth}";
+        }
+    }
+
+    public void UpdateHealth()
+    {
+        // call instance to invoke from unity event
+        playerHealth = PlayerHealth.instance;
+        GameObject.Find("HealthText").GetComponentInChildren<TextMeshProUGUI>()
+                .text = $"Health: {playerHealth.health} / {playerHealth.maxHealth}";
+    }
+}
